@@ -1,0 +1,104 @@
+                                                                           -------------------oo0oo-----------------
+
+TO CREATE DAJNGO PROJECT 
+
+
+step-1 : python -m venv " demo "
+
+step-2 : cd demo/scripts & .. then actiavte
+
+step-3 : python -m django startproject " projectname "
+
+step-4 : python manage.py runserver                              
+
+                                                                           -------------------oo0oo-----------------
+
+create views.py to write the code or project logic,
+import funtion in views.py to urls.py 
+
+
+                                                                           -------------------oo0oo-----------------
+
+
+TO CREATE DJANGO APPS
+
+step-1 : python manage.py startapp appname
+
+                                                                           -------------------oo0oo-----------------
+
+
+ABOUT SETTINGS.PY
+
+step-1 : import os
+
+----------------------- Template setting------------------------------------------------------------
+TEMPLATES = [
+    {
+        
+        'DIRS': [os.path.join(BASE_DIR,'templates')], # this is your template folder path.
+        
+    },
+]
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------static files--------------------------------------------------------------
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static") # this is your static folder
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR,'assets') #this is you assets folder.
+
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------media-----------------------------------------------------------
+MEDIA_URL ='/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+------------------------------configure static and media files to urls-------------------------------
+from django.conf.urls.static import static
+from django.conf import  settings
+
+
+if settings.DEBUG:
+    
+    urlpatterns  += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+-------------------------------------------------------------------------------------------------------
+
+--------------------------------data base--------------------------------------------------------------
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'DB_NAME', # Database name
+        'USER': 'DB_USER',
+        'PASSWORD': 'DB_PASSWORD',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+
+
+
+
+
+---------------------------------time zone-------------------------------------------------------------
+TIME_ZONE =  'Asia/Kolkata'
+-------------------------------------------------------------------------------------------------------
