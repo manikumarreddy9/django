@@ -2,19 +2,18 @@
 
 TO CREATE DAJNGO PROJECT 
 
+	step-1 : python -m venv " demo "
 
-step-1 : python -m venv " demo "
+	step-2 : cd demo/scripts & .. then actiavte
 
-step-2 : cd demo/scripts & .. then actiavte
+	step-3 : python -m django startproject " projectname "
 
-step-3 : python -m django startproject " projectname "
-
-step-4 : python manage.py runserver                              
+	step-4 : python manage.py runserver                              
 
                                                                            -------------------oo0oo-----------------
 
-create views.py to write the code or project logic,
-import funtion in views.py to urls.py 
+	create views.py to write the code or project logic,
+	import funtion in views.py to urls.py 
 
 
                                                                            -------------------oo0oo-----------------
@@ -22,14 +21,14 @@ import funtion in views.py to urls.py
 
 TO CREATE DJANGO APPS
 
-step-1 : python manage.py startapp appname
+	step-1 : python manage.py startapp appname
 
                                                                            -------------------oo0oo-----------------
 
 
 ABOUT SETTINGS.PY
 
-step-1 : import os
+	step-1 : import os
 
 ----------------------- Template setting------------------------------------------------------------
 TEMPLATES = [
@@ -102,3 +101,107 @@ DATABASES = {
 ---------------------------------time zone-------------------------------------------------------------
 TIME_ZONE =  'Asia/Kolkata'
 -------------------------------------------------------------------------------------------------------
+
+                                                                           -------------------oo0oo-----------------
+
+
+STATIC FILES
+
+	collect static in cmd
+
+                                                                           -------------------oo0oo-----------------
+
+
+dynamic data from templates of html files to views to urls
+
+	def home(request):
+  		  return render(request,"base.html",{"name":"mani"})
+
+	def demo(request):
+   		 return HttpResponse("this is second project")
+
+
+                                                                           -------------------oo0oo-----------------
+
+TO CREATESUPERUSER
+
+	NOTE :- to create superuser (i.e python manage.py createsuperuser)
+    	    first migrate (i.e python manage.py migrate)
+
+
+
+
+                                                                           -------------------oo0oo-----------------
+
+ABOUT MODELS.PY to admin.py
+
+	in app models.py creaet your fileds
+	
+  	  def __str__(self):
+        	return self.title :- this is used to display name (OF title) in the admin page 
+
+	
+	from .models import "your class"
+	to register :- admin.site.register(Blog)
+
+	then.. in cmd :-   python mangae.py makemigartions	
+			   python mangae.py migrate
+
+
+                                                                           -------------------oo0oo-----------------
+
+FROM DATABASE TO TEMPLATES 
+
+	{% block content %}
+        {% for i in post %}
+
+        {{i.title}}
+        {{i.image}}
+        {{i.description}}
+        {{i.author}}
+        {{i.created_at}}
+
+        {% endfor%}
+        {% endblock content %}
+
+
+                                                                           -------------------oo0oo-----------------
+
+UPLOAD IMG AND VIDEOS
+  
+  IMG
+	{% block content %}
+        {% for i in post %}
+
+        <h1>Title     :-{{i.title}}</h1>
+        <img src="{{i.image.url}}">
+        <p>description:-{{i.description}}</p>
+        <i>Autor      :-{{i.author}}</i><br>
+        <b>Creaeted-at:-{{i.created_at}}</b>
+
+        {% endfor%}
+        {% endblock content %}
+	
+  VID
+
+	{% block content %}
+        {% for i in post %}
+
+        <h1>Title     :-{{i.title}}</h1>
+        <video width='320' height='240' controls>
+            <source src="{{i.video.uls}}" type='video/mp4'>
+        </video>
+        
+        {% endfor%}
+        {% endblock content %}
+
+                                                                           -------------------oo0oo-----------------
+
+FROM FORNTEND TO BACKEND DATA data visbuliaty
+
+	create data fields in admin using models.py & admin.py & apply migrations 
+	create html file with input data & forms & mainly {% csrf token %} & link  to urls.py
+	create post methods in views.py and add those to urls.py
+	
+	also create new html file and views.py and urls.py to display data 
+	
