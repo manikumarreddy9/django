@@ -4,7 +4,7 @@ TO CREATE DAJNGO PROJECT
 
 	step-1 : python -m venv " demo "
 
-	step-2 : cd demo/scripts & .. then actiavte
+	step-2 : cd demo/scripts & .. then actiavte (or) python -m venv myenv
 
 	step-3 : python -m django startproject " projectname "
 
